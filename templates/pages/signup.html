@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="heading">
+        <h1>SHORTLISTED.</h1>
+    </div>
+    <div class="quote">
+        <p class="quote-text">"Choose a job you love, and you will never have to work a day in your life"</p>
+    </div>
+    <div class="button-login">
+        <button onclick="window.location='/login';">LOGIN</button>
+    </div>
+    <div class="container-signup">
+        <header>Registration</header>
+        <form  method="POST" onsubmit="if(document.getElementById('agree').checked) { return true; } else { alert('Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy'); return false; }">
+          {% csrf_token %}
+          <div class="form-signup">
+              <div class="inputfield">
+                <label>Register as</label>
+                <div class="custom_select">
+                  <select name='Role' required>
+                    <option value="">Select</option>
+                    <option value="candidate">Candidate</option>
+                    <option value="recruiter">Recruiter</option>
+                  </select>
+                </div>
+            </div> 
+            <div class="inputfield">
+               <label>Name</label>
+               <input name = "UserName" type="text" class="input" required>
+            </div>  
+             <div class="inputfield">
+               <label>Email</label>
+               <input name = "UserEmail" type="text" class="input" required>
+            </div>  
+            <div class="inputfield">
+               <label>Password</label>
+               <input name = "password" type="password" class="input" required>
+            </div>  
+           <div class="inputfield">
+               <label>Confirm Password</label>
+               <input name = "conf_password" type="password" class="input" required>
+            </div> 
+             <div class="inputfield">
+               <label>Gender</label>
+               <div class="custom_select">
+                 <select name="gender" required>
+                   <option value="">Select</option>
+                   <option value="male">Male</option>
+                   <option value="female">Female</option>
+                   <option value="other">Other</option>
+                 </select>
+               </div>
+            </div> 
+            <div class="inputfield">
+               <label>Date of Birth</label>
+               <input type="date" class="input" required>
+            </div>
+             <div class="inputfield">
+               <label>Phone Number</label>
+               <input type="text" name = "phn_num" class="input" required>
+            </div>   
+           <div class="inputfield terms">
+               <label class="check">
+                 <input type="checkbox" name="checkbox" value="check" id="agree">
+                 <span class="checkmark"></span>
+               </label>
+               &nbsp;<p>I have read and agree to the Terms and Conditions and Privacy Policy</p>
+            </div> 
+            <div class="button">
+                <div class="inner"></div>
+                <button>Register</button>
+            </div>
+         </div>
+        </form>
+        </div>
+    </div>
+    
+</div>
+
+{% endblock content %}

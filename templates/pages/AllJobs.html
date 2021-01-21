@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="heading">
+    <h1>ALL OPENINGS....</h1>
+</div>
+<br>
+<h1><div id='jobs'>Replace Me</div></h1>
+<script>
+const JobsElement = document.getElementById('jobs')
+const xhr = new XMLHttpRequest()
+const method = 'GET'
+const url = "/jobs"
+const responseType = "json"
+xhr.responseType = responseType
+xhr.open(method,url)
+xhr.onload = function(){
+    const serverResponse = xhr.response
+    var i;
+    var allJobs="";
+    for(i=0;i<serverResponse.response.length;i++){
+        allJobs += "<div>"
+        allJobs += serverResponse.response[i].description
+        allJobs += "</div>"
+        allJobs += "<br>"
+    }
+    JobsElement.innerHTML = allJobs
+}
+xhr.send()
+</script>
+{% endblock content %}
